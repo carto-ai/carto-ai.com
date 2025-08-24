@@ -1,0 +1,198 @@
+---
+const links = {
+  github: "https://github.com/<your-username>/<your-repo>",
+  docs: "/thesis",
+  quickstart: "#quickstart"
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Cartographer — Surgical context for coding agents</title>
+    <meta
+      name="description"
+      content="Cartographer builds surgical context for coding tools, so agents stay sharp in 100k+ LOC codebases."
+    />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand"><span class="logo"></span> Cartographer</div>
+        <div class="btn-row">
+          <a class="btn" href="{links.docs}">Thesis</a>
+          <a class="btn" href="{links.github}">GitHub</a>
+          <a class="cta" href="{links.quickstart}">Get started</a>
+        </div>
+      </nav>
+
+      <header class="hero">
+        <span class="pill">Agentic coding, but focused</span>
+        <h1>
+          Surgical context for coding tools—<span class="inline-hl"
+            >precise</span
+          >, not bloated.
+        </h1>
+        <p class="sub">
+          Modern assistants fail in large codebases because they see too much or
+          the wrong thing.
+          <strong>Cartographer</strong> builds the <em>right</em> context at the
+          <em>right</em> time: live code maps, symbol graphs, and minimal
+          excerpts that let agents reason like seasoned maintainers.
+        </p>
+        <div class="btn-row">
+          <a class="cta" href="{links.github}">View on GitHub</a>
+          <a class="btn" href="{links.docs}">Read the Thesis</a>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="grid">
+          <div class="card">
+            <h3>Why now</h3>
+            <p>
+              Context windows grew; <strong>signal</strong> didn’t. Stuffing
+              100s of files is wasteful and fragile. We flip it: build a
+              <strong>targeted</strong> working set—fast to compute, cheap to
+              send, and specific to the task.
+            </p>
+          </div>
+          <div class="card">
+            <h3>The thesis</h3>
+            <p>
+              Coding tools should compose insights from <strong>LSPs</strong>,
+              <strong>ASTs</strong>, <strong>symbol graphs</strong>, and
+              <strong>edit history</strong> to deliver a surgical context
+              bundle. Less haystack, more needle.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Surgical context</h3>
+            <p>
+              A compact, task‑scoped package: callee chains, type contracts,
+              config edges, relevant diffs, and the handful of files that
+              matter—ranked, deduped, and trimmed.
+            </p>
+          </div>
+          <div class="code">
+            <pre><code># Example: “Implement UserService.refreshToken()”
+context/
+├─ focus/              # must-see snippets
+│  ├─ user_service.ts:L88-142
+│  └─ oauth_client.ts:L10-44
+├─ calls/
+│  ├─ user_repo.ts → db.ts
+│  └─ oauth_client.ts → http.ts
+├─ contracts/
+│  ├─ IUserRepo.refreshToken(userId: string): Token
+│  └─ IOAuthClient.refresh(token: Token): Token
+├─ config/
+│  └─ env.yaml (OAUTH_*)
+└─ diffs/
+   └─ recent/ feature/refresh_token</code></pre>
+            <div class="kicker">
+              Built on LSP, AST, symbol/X‑ref graphs, and recent edits.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="quickstart">
+        <h2>What Cartographer does</h2>
+        <p class="sub">
+          We maintain a live semantic index of your repo, then assemble a
+          minimal, ranked bundle for each task: the few snippets and artifacts
+          that unlock the answer.
+        </p>
+        <div class="badges" style="margin-top: 14px">
+          <span class="badge">Language‑server aware</span>
+          <span class="badge">AST &amp; symbol graphs</span>
+          <span class="badge">Incremental updates</span>
+          <span class="badge">Cost‑aware packing</span>
+          <span class="badge">Editor/agent APIs</span>
+        </div>
+        <div class="grid" style="margin-top: 18px">
+          <div class="card" style="grid-column: span 6">
+            <h3>1) Map</h3>
+            <p>
+              Ingest repo via LSP &amp; parsers; build cross‑refs, call graphs,
+              ownership maps, and change history.
+            </p>
+          </div>
+          <div class="card" style="grid-column: span 6">
+            <h3>2) Select</h3>
+            <p>
+              Given a task, traverse symbols to pick the smallest working set
+              that still preserves invariants.
+            </p>
+          </div>
+          <div class="card" style="grid-column: span 6">
+            <h3>3) Pack</h3>
+            <p>
+              Trim to budget with contract summaries, snippet slicing, and
+              deduped paths; add rationale.
+            </p>
+          </div>
+          <div class="card" style="grid-column: span 6">
+            <h3>4) Serve</h3>
+            <p>
+              Expose to agents/IDEs via API: <em>ContextBundle</em> +
+              <em>Evidence</em> → fewer hallucinations, better edits.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Why it matters</h2>
+        <p class="sub">
+          Most failures in large repos are context failures: wrong file, missing
+          invariant, or invisible side‑effect. Surgical context reduces retries,
+          token burn, and review drag—letting assistants behave like focused
+          teammates, not tourists.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Roadmap</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Alpha</h3>
+            <p>
+              Python + TypeScript; CLI &amp; API; VS Code bridge; GH Actions
+              indexer.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Beta</h3>
+            <p>
+              PR reviewer with surgical bundles; diff‑aware test selection; repo
+              heatmaps.
+            </p>
+          </div>
+          <div class="card">
+            <h3>1.0</h3>
+            <p>
+              Multi‑repo graphs; policy gates; organization‑wide symbol search.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="btn-row">
+          <a class="cta" href="{links.github}">Star the repo</a>
+          <a class="btn" href="{links.docs}">Read the Thesis</a>
+          <a class="btn" href="mailto:hello@example.com">Contact</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        © {new Date().getFullYear()} Cartographer. Surgical context for coding
+        tools.
+      </footer>
+    </div>
+  </body>
+</html>
