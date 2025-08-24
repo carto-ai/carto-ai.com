@@ -4,6 +4,8 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   output: "static",
   site: "https://carto-ai.com",
+  base: "/",
+
   integrations: [
     sitemap({
       // Optional extras:
