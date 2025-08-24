@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://carto-ai.scom/sitemap.xml
+Sitemap: https://carto-ai.com/sitemap.xml
