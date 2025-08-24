@@ -1,11 +1,13 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 import Site from "../layouts/Site.astro";
+const base = import.meta.env.BASE_URL; // '/carto-ai.com/' on GH Pages, '/' locally
 const links = {
   thesis: base + "thesis",
   blog: base + "blog",
-  github: "https://github.com/carto-ai/cartographer"
-}
+  docs: base + "docs",
+  github: "https://github.com/carto-ai/cartographer",
+};
 ---
 
 <Site>
@@ -19,12 +21,12 @@ const links = {
       Modern assistants fail in large codebases because they see too much or the
       wrong thing.
       <strong>Cartographer</strong> builds the <em>right</em> context at the
-      <em>right</em> time: live code maps, symbol graphs, and minimal excerpts
-      that let agents reason like seasoned maintainers.
+      <em>right</em> time: live code maps, symbol graphs, and minimal excerpts that
+      let agents reason like seasoned maintainers.
     </p>
     <div class="btn-row">
-      <a class="cta" href="{links.github}">View on GitHub</a>
-      <a class="btn" href="{links.docs}">Read the Thesis</a>
+      <a class="cta" href={links.github}>View on GitHub</a>
+      <a class="btn" href={links.docs}>Read the Thesis</a>
     </div>
   </header>
 
@@ -35,8 +37,8 @@ const links = {
         <p>
           Context windows grew; <strong>signal</strong> didn’t. Stuffing 100s of
           files is wasteful and fragile. We flip it: build a
-          <strong>targeted</strong> working set—fast to compute, cheap to send,
-          and specific to the task.
+          <strong>targeted</strong> working set—fast to compute, cheap to send, and
+          specific to the task.
         </p>
       </div>
       <div class="card">
@@ -44,8 +46,8 @@ const links = {
         <p>
           Coding tools should compose insights from <strong>LSPs</strong>,
           <strong>ASTs</strong>, <strong>symbol graphs</strong>, and
-          <strong>edit history</strong> to deliver a surgical context bundle.
-          Less haystack, more needle.
+          <strong>edit history</strong> to deliver a surgical context bundle. Less
+          haystack, more needle.
         </p>
       </div>
       <div class="card">
@@ -161,9 +163,9 @@ context/
 
   <section class="section">
     <div class="btn-row">
-      <a class="cta" href="{links.github}">Star the repo</a>
-      <a class="btn" href="{links.docs}">Read the Thesis</a>
-      <a class="btn" href="mailto:hello@example.com">Contact</a>
+      <a class="cta" href={links.github}>Star the repo</a>
+      <a class="btn" href={links.docs}>Read the Thesis</a>
+      <a class="btn" href="mailto:ed@carto-ai.com">Contact</a>
     </div>
   </section>
 </Site>
