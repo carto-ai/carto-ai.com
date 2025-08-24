@@ -1,0 +1,22 @@
+---
+import "../../styles/global.css";
+import Site from "../../layouts/Site.astro";
+
+const modules = import.meta.glob("./*.md", { eager: true }); // only 1-level files in /blog
+const posts = Object.values(modules)
+  .map((m) => ({ url: m.url, frontmatter: m.frontmatter }))
+  .sort((a, b) => new Date(b.frontmatter?.pubDate ?? 0) - new Date(a.frontmatter?.pubDate ?? 0));
+---
+<Site>
+  <h1>Blog</h1>
+  <ul>
+    {posts.map((p) => (
+      <li style="margin: 10px 0">
+        <a href={p.url}>{p.frontmatter?.title ?? p.url}</a>
+        {p.frontmatter?.pubDate && (
+          <span class="kicker"> — {new Date(p.frontmatter.pubDate).toDateString()}</span>
+        )}
+      </li>
+    ))}
+  </ul>
+</Site>

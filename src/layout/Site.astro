@@ -1,0 +1,36 @@
+---
+import "../styles/global.css";
+const base = import.meta.env.BASE_URL; // '/carto-ai.com/' on GH Pages, '/' locally
+const links = {
+  home: base,
+  thesis: base + "thesis",
+  blog: base + "blog",
+  github: "https://github.com/carto-ai/cartographer"
+};
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title><slot name="title" />Cartographer</title>
+    <meta name="description" content="Cartographer: surgical context for coding agents." />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand"><span class="logo"></span> <a href={links.home}>Cartographer</a></div>
+        <div class="btn-row">
+          <a class="btn" href={links.thesis}>Thesis</a>
+          <a class="btn" href={links.blog}>Blog</a>
+          <a class="cta" href={links.github}>GitHub</a>
+        </div>
+      </nav>
+      <main class="section">
+        <slot />
+      </main>
+      <footer class="footer">
+        © {new Date().getFullYear()} Cartographer.
+      </footer>
+    </div>
+  </body>
+</html>
